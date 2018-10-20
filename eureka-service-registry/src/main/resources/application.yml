@@ -7,3 +7,24 @@ eureka:
     fetch-registry: false
   server:
     enable-self-preservation: true
+  instance:
+    health-check-url: /actuator/health
+
+spring:
+  boot:
+    admin:
+      client:
+        url:
+          - "http://localhost:8761/admin"
+      context-path: "/admin"
+  application:
+    name: eureka-service-registry
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-public class CustomeRestTemplate {
+public class CustomeRestTemplateConfig {
 
     @Bean
     @LoadBalanced

@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: films-aggregator-service
+  boot:
+    admin:
+      client:
+        url:
+          - "http://localhost:8761/admin"
 
 eureka:
   instance:
@@ -11,3 +16,12 @@ eureka:
     lease-expiration-duration-in-seconds: 2
   client:
     service-url: ["http://localhost:8761/eureka/"]
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

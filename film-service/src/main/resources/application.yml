@@ -1,0 +1,38 @@
+server:
+  address: localhost
+  port: 8081
+
+spring:
+  application:
+    name: films-service
+  boot:
+    admin:
+      client:
+        url:
+        - "http://localhost:8761/admin"
+  datasource:
+    url: jdbc:mysql://localhost/films-service
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+    date-format: dd-MM-yyyy
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 2
+    lease-renewal-interval-in-seconds: 1
+  client:
+    service-url:
+      - "http://localhost:8761/eureka/"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

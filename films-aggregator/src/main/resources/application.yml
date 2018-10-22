@@ -4,11 +4,12 @@ server:
 spring:
   application:
     name: films-aggregator-service
-  boot:
-    admin:
-      client:
-        url:
-          - "http://localhost:8761/admin"
+# TODO MONITORING
+#  boot:
+#    admin:
+#      client:
+#        url:
+#          - "http://localhost:8761/admin"
 
 eureka:
   instance:

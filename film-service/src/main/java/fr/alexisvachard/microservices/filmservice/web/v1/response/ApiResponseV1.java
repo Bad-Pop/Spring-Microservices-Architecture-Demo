@@ -1,16 +1,28 @@
-package fr.alexisvachard.microservices.filmservice.web.response;
+package fr.alexisvachard.microservices.filmservice.web.v1.response;
 
-public class ApiResponse<T> {
+public class ApiResponseV1<T> {
 
     private T body;
     private boolean succes;
     private int status;
     private String message;
 
-    public ApiResponse() {
+    public ApiResponseV1() {
     }
 
-    public ApiResponse(T body, boolean succes, int status, String message) {
+    public ApiResponseV1(boolean succes, int status, String message) {
+        this.succes = succes;
+        this.status = status;
+        this.message = message;
+    }
+
+    public ApiResponseV1(T body, boolean succes, int status) {
+        this.body = body;
+        this.succes = succes;
+        this.status = status;
+    }
+
+    public ApiResponseV1(T body, boolean succes, int status, String message) {
         this.body = body;
         this.succes = succes;
         this.status = status;

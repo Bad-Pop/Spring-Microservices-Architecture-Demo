@@ -1,4 +1,0 @@
-New Spring boot app for :
-
-spring-boot-admin-starter-server
-pring-boot-admin-starter-client

@@ -1,39 +1,26 @@
 server:
+  port: 8080
   address: 127.0.0.1
-  port: 8081
 
 spring:
   application:
-    name: films-service
+    name: service-aggregator
   boot:
     admin:
       client:
         url:
         - "http://localhost:8079/admin"
-  datasource:
-    url: jdbc:mysql://localhost/films-service
-    username: root
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
-  jackson:
-    serialization:
-      WRITE_DATES_AS_TIMESTAMPS: false
-    date-format: dd-MM-yyyy
+
 eureka:
   instance:
     health-check-url: ${server.address}:${server.port}/actuator/health
-    lease-expiration-duration-in-seconds: 2
     lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
     prefer-ip-address: true
     ip-address: ${server.address}
     instance-id: ${server.address}:${server.port}
   client:
-    service-url:
-    - "http://localhost:8761/eureka/"
+    service-url: ["http://localhost:8761/eureka/"]
 
 management:
   endpoints:
@@ -45,4 +32,4 @@ management:
       show-details: ALWAYS
 
 logging:
-  file: film_service.log
+  file: service_aggregator.log

@@ -1,0 +1,28 @@
+server:
+  port: 8079
+  address: 127.0.0.1
+
+spring:
+  application:
+    name: monitoring-service
+  boot:
+    admin:
+      client:
+        url:
+          - "http://localhost:8079/admin"
+      context-path: /admin
+      ui:
+        brand: Microservice Architecture Monitoring
+        title: Service Monitoring
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+logging:
+  file: monitoring_service.log

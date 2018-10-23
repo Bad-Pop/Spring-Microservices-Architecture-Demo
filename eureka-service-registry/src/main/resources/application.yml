@@ -1,5 +1,6 @@
 server:
   port: 8761
+  address: 127.0.0.1
 
 eureka:
   client:
@@ -8,11 +9,19 @@ eureka:
   server:
     enable-self-preservation: true
   instance:
-    health-check-url: /actuator/health
+    health-check-url: ${server.address}:${server.port}/actuator/health
+    prefer-ip-address: true
+    ip-address: ${server.address}
+    instance-id: ${server.address}:${server.port}
 
 spring:
   application:
     name: eureka-service-registry
+  boot:
+    admin:
+      client:
+        url:
+        - "http://localhost:8079/admin"
 
 management:
   endpoints:
@@ -22,3 +31,6 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+
+logging:
+  file: eureka_service_registry.log
